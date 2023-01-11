@@ -1,0 +1,98 @@
+.login{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--medium-gray);
+    margin: 200px 0px;
+}
+
+.login-logo{
+    width: 100%;
+    display: flex;
+    max-width: 400px;
+    justify-items: left;
+}
+
+.login-logo svg{
+    width: 30px;
+    color: var(--green);
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-form input{
+    width: 100%;
+    font-size: 14px;
+    padding: 5px 0px;
+    border: none;
+    outline: none;
+    background-color: unset;
+    border-bottom: 1px solid var(--green);
+    transition: .3s;
+    color: rgb(192, 192, 192);
+}
+
+.login-form button{
+    max-width: 100px;
+    background-color: var(--green);
+    padding: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.login-footer p{
+    color: white;
+    font-weight: 100;
+    font-size: 12px;
+}
+
+.login-footer p a{
+    color: white;
+    font-weight: 400;
+    transition: .3s;
+}
+
+.login-logo,
+.login-form,
+.login-footer{
+    margin-bottom: 15px;
+}
+
+.login-form button:hover,
+.login-form input:hover,
+.login-footer p a:hover{
+    transition: .3s;
+    opacity: .6;
+}
+
+.view-pass{
+    position: relative;
+}
+
+.view-pass button{
+    position: absolute;
+    width: max-content;
+    border: 0;
+    outline: none;
+    background-color: unset;
+    right: 5px;
+    bottom: 3px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.view-pass button svg{
+    color: var(--green);
+    width: 20px;
+}
