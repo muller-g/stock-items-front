@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: var(--medium-gray);
+    background-color: var(--dark-gray);
     margin: 200px 0px;
 }
 
@@ -43,12 +43,6 @@
 
 .login-form button{
     max-width: 100px;
-    background-color: var(--green);
-    padding: 5px;
-    border: none;
-    color: white;
-    cursor: pointer;
-    transition: .3s;
 }
 
 .login-footer p{
@@ -69,7 +63,6 @@
     margin-bottom: 15px;
 }
 
-.login-form button:hover,
 .login-form input:hover,
 .login-footer p a:hover{
     transition: .3s;
