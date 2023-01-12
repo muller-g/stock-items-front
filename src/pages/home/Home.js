@@ -24,7 +24,7 @@ function Home(){
                 <div className="search-field">
                     <input type="text" name="search" id="search" />
                     <button className='search-button'><Icon path={mdiMagnify }/> Buscar</button>
-                </div>
+                </div> 
             </div>
         </section>
     )
