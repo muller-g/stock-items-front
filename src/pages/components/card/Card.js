@@ -11,7 +11,7 @@ function Card({text, icon, value, iColor}){
                 }}/>
             </div>
             <div className="card-value">
-                <h1>R$ {value},00</h1>
+                <h1>{(value / 100).toLocaleString("pt-BR", {style: 'currency', currency: 'BRL' })}</h1>
             </div>
         </div>
     )

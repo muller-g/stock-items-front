@@ -1,11 +1,9 @@
-import './Login.css'
-import Icon from '@mdi/react'
-import { mdiCheckDecagramOutline } from '@mdi/js';
-import { mdiEyeOutline } from '@mdi/js';
-import { mdiEyeOffOutline } from '@mdi/js';
+import { mdiCheckDecagramOutline, mdiEyeOffOutline, mdiEyeOutline } from '@mdi/js';
+import Icon from '@mdi/react';
 import { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Auth';
+import './Login.css';
 
 function Login(){   
 

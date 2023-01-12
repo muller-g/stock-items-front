@@ -82,6 +82,17 @@
     width: 100%;
 }
 
+.table-section .table-section_title{
+    width: 100%;
+    display: flex;
+    padding: 0px 12px;
+    justify-content: space-between;
+}
+
+.table-section .col p{
+    color: #9ba6ac;
+}
+
 .search-field button{
     width: 20%;
     display: flex;
@@ -112,17 +123,6 @@
 .table-section{
     margin-top: 20px;
     width: 100%;
-}
-
-.table-section table{
-    border-collapse: collapse;
-    width: 100%;
-    text-align: left;
-}
-
-.table-section table thead tr th{
-    color: #9ba6ac;
-    font-weight: 200;
 }
 
 .table-section_body{
