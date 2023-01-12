@@ -1,0 +1,24 @@
+.item{
+    width: 100%;
+    display: flex;
+    background-color: rgb(51 50 55);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.item p{
+    color: #89949a;
+    width: max-content;
+}
+
+.item p:nth-child(1){
+    width: 290px;
+}
+
+.item p:nth-child(2){
+    width: 180px;
+}
+
+.item p:nth-child(3){
+    width: 310px;
+}
