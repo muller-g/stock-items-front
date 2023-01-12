@@ -3,17 +3,30 @@ import Icon from '@mdi/react'
 import { mdiCheckDecagramOutline } from '@mdi/js';
 import { mdiEyeOutline } from '@mdi/js';
 import { mdiEyeOffOutline } from '@mdi/js';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Auth';
 
 function Login(){   
 
+    const { login } = useContext(AuthContext);
+
     const [showEye, setShowEye] = useState(true);
     const navigate = useNavigate();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
 
     function changeEye(){
         showEye ? setShowEye(false) : setShowEye(true)  
         document.querySelector('#pass').type = showEye ? 'text' : 'password';
+    }
+
+    function loginSystem(){
+        if(email && password){
+            login(email, password);
+        } else {
+            console.log("erro")
+        }
     }
 
     return(
@@ -23,14 +36,14 @@ function Login(){
                     <Icon path={mdiCheckDecagramOutline}/>
                 </div>
                 <div className="login-form">
-                    <input type="text" name="user" id="user" placeholder='Insira seu usuário' />
+                    <input type="text" name="user" id="user" placeholder='Insira seu usuário' onChange={(e) => setEmail(e.target.value)}/>
                     <div className="view-pass">
-                        <input type="password" name="pass" id="pass" placeholder='Insira sua senha' />
+                        <input type="password" name="pass" id="pass" placeholder='Insira sua senha' onChange={(e) => setPassword(e.target.value)}/>
                         {
                             showEye ? <button onClick={changeEye}><Icon path={mdiEyeOutline}/></button> : <button onClick={changeEye}><Icon path={mdiEyeOffOutline}/></button>
                         }
                     </div>
-                    <button onClick={() => navigate('/')}>Entrar</button>
+                    <button onClick={loginSystem}>Entrar</button>
                 </div>
                 <div className="login-footer">
                     <p>Caso tenha problemas pra entrar, contate o <a href='#'>suporte aqui.</a></p>
