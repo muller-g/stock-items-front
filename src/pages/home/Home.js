@@ -9,51 +9,109 @@ import { mdiMagnify } from '@mdi/js';
 import { mdiLogout } from '@mdi/js';
 import Item from '../components/item/Item';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Auth';
+import { useContext, useEffect, useState } from 'react';
+import ModalTransition from '../components/modal_transition/ModalTransition';
+import axios from 'axios';
 
 function Home(){
 
+    const { logout, token } = useContext(AuthContext);
     const navigate = useNavigate(); 
+    const [data, setData] = useState([]);
+    const [outs, setOuts] = useState([]);
+    const [entries, setEntries] = useState([]);
+    const [searchTerm, setSearchTerm] = useState();
+    
+    function openModal(){
+        document.querySelector('.modal-transition').classList.toggle('modal_on')
+    }
+
+    function search(){
+        axios.post(process.env.REACT_APP_API + '/auth/spending-search', {
+            user_id: localStorage.getItem('user_id'),
+            search: searchTerm
+        },{
+            headers: { Authorization: `Bearer ${token}` }
+        }).then(res =>
+            setData(res.data)
+        )
+    }
+
+    useEffect(() => {
+        axios.post(process.env.REACT_APP_API + '/auth/spending-user', {
+            user_id: localStorage.getItem('user_id')
+        },{
+            headers: { Authorization: `Bearer ${token}` }
+        }).then(res =>
+            setData(res.data)
+        )
+
+        axios.post(process.env.REACT_APP_API + '/auth/spending-entries', {
+            user_id: localStorage.getItem('user_id')
+        },{
+            headers: { Authorization: `Bearer ${token}` }
+        }).then(res =>
+            setEntries(res.data)
+        )
+
+        axios.post(process.env.REACT_APP_API + '/auth/spending-outs', {
+            user_id: localStorage.getItem('user_id')
+        },{
+            headers: { Authorization: `Bearer ${token}` }
+        }).then(res =>
+            setOuts(res.data)
+        )
+    }, [])
 
     return(
+        <>
         <section>
             <div className="light-gray"></div>
             <div className="home">
                 <div className="home-top">
                     <Icon path={mdiCheckDecagramOutline}/>
                     <div className="menu">
-                        <button>Nova Transação</button>
-                        <button onClick={() => navigate('/login')}><Icon path={mdiLogout} /></button>
+                        <button onClick={openModal}>Nova Transação</button>
+                        <button onClick={logout}><Icon path={mdiLogout} /></button>
                     </div>
                 </div>
                 <div className="home-cards">
-                    <Card text="Entradas" icon={mdiArrowUpBoldCircleOutline} value="1250" iColor={'#03875f'}/>
-                    <Card text="Saídas" icon={mdiArrowDownBoldCircleOutline} value="1250" iColor={'#fc4d6e'}/>
+                    <Card text="Entradas" icon={mdiArrowUpBoldCircleOutline} value={entries} iColor={'#03875f'}/>
+                    <Card text="Saídas" icon={mdiArrowDownBoldCircleOutline} value={outs} iColor={'#fc4d6e'}/>
                     <Card text="Total" icon={mdiCurrencyUsd} value="1250" iColor={'white'}/>
                 </div>
                 <div className="search-field">
-                    <input type="text" name="search" id="search" />
-                    <button className='search-button'><Icon path={mdiMagnify }/> Buscar</button>
+                    <input type="text" name="search" id="search" onChange={(e) => setSearchTerm(e.target.value)}/>
+                    <button className='search-button' onClick={search}><Icon path={mdiMagnify }/> Buscar</button>
                 </div>
                 <div className="table-section">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Descrição</th>
-                                <th>Preço</th>
-                                <th>Categoria</th>
-                                <th>Data</th>
-                            </tr>
-                        </thead>
-                    </table>
+                    <div className="table-section_title">
+                        <div className="col">
+                            <p>Descrição</p>
+                        </div>
+                        <div className="col">
+                            <p>Preço</p>
+                        </div>
+                        <div className="col">
+                            <p>Categoria</p>
+                        </div>
+                        <div className="col">
+                            <p>Data</p>
+                        </div>
+                    </div>
                     <div className="table-section_body">
-                        <Item description="Desenvolvimento" price="1203" category="Venda" date="2023-04-11"/>
-                        <Item description="Aluguel" price="2133" category="Conta" date="2023-04-11"/>
-                        <Item description="Servidor" price="1233" category="Conta" date="2023-04-11"/>
-                        <Item description="Configuração banco de dados" price="3333" category="Venda" date="2023-04-11"/>
+                        {
+                            data?.map((dat, i) => 
+                                <Item key={i} description={dat?.description} price={dat?.price} category={dat?.category} date={dat?.created_at}/>
+                            )   
+                        }
                     </div>
                 </div>
             </div>
         </section>
+        <ModalTransition />
+        </>
     )
 }
 

@@ -1,0 +1,76 @@
+.modal-transition{
+    width: 100%;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 9999999999;
+    background-color: rgba(0, 0, 0, 0.555);
+}
+
+.modal-transition .modal-transition_container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 1px black;
+    background-color: var(--medium-gray);
+    padding: 30px;
+}
+
+.modal_on{
+    display: flex!important;
+}
+
+.modal-transition_container h1{
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    color: #9ba6ac;
+    margin-bottom: 15px;
+}
+
+.modal-transition_container select{
+    cursor: pointer;
+}
+
+.modal-transition_container input{
+    margin-bottom: 10px;
+}
+
+.modal-transition_container input,
+.modal-transition_container select{
+    width: 100%;
+    font-size: 14px;
+    padding: 5px 0px;
+    border: none;
+    outline: none;
+    background-color: unset;
+    border-bottom: 1px solid var(--green);
+    transition: .3s;
+    color: rgb(192, 192, 192);
+    font-size: 15px;
+}
+
+.modal-transition_container select:checked{
+    color: rgb(192, 192, 192);
+}
+
+.two-btns{
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.two-btns button{
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.two-btns button:nth-child(2){
+    background-color: unset;
+}
