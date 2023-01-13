@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useContext, useState } from 'react';
-import { AuthContext } from '../../../Auth';
+import { AuthContext } from '../../Auth';
 import './ModalTransition.css'
 
 function ModalTransition(){

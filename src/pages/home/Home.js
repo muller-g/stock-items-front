@@ -1,17 +1,17 @@
 import './Home.css'
 import Icon from '@mdi/react'
 import { mdiCheckDecagramOutline } from '@mdi/js';
-import Card from '../components/card/Card';
+import Card from '../../components/card/Card';
 import { mdiArrowUpBoldCircleOutline } from '@mdi/js';
 import { mdiArrowDownBoldCircleOutline } from '@mdi/js';
 import { mdiCurrencyUsd } from '@mdi/js';
 import { mdiMagnify } from '@mdi/js';
 import { mdiLogout } from '@mdi/js';
-import Item from '../components/item/Item';
+import Item from '../../components/item/Item';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Auth';
 import { useContext, useEffect, useState } from 'react';
-import ModalTransition from '../components/modal_transition/ModalTransition';
+import ModalTransition from '../../components/modal_transition/ModalTransition';
 import axios from 'axios';
 
 function Home(){

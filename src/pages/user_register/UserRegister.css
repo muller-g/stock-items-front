@@ -1,0 +1,56 @@
+.light-gray{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-color: var(--dark-gray);
+    width: 100%;
+    height: 200px;
+    z-index: 0;
+}
+
+.user-register{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-register_form{
+    width: 100%;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.user-register_form h1{
+    font-size: 20px;
+    color: white;
+    font-weight: 100;
+}
+
+.user-register_form input{
+    width: 100%;
+    font-size: 14px;
+    padding: 5px 0px;
+    border: none;
+    outline: none;
+    background-color: unset;
+    border-bottom: 1px solid var(--green);
+    transition: .3s;
+    color: rgb(192, 192, 192);
+}
+
+.two-btn{
+    display: flex;
+    gap: 10px;
+}
+
+.two-btn button{
+    border-radius: 8px;
+}
+
+.two-btn button:nth-child(2){
+    background-color: unset;
+}
